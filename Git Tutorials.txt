@@ -1,0 +1,191 @@
+What is Git?
+What is Github?
+Difference between git and github?
+
+Working Directory, stage, local repository,and commit
+
+What is repository?
+
+Install git
+Download the git in the git offical website
+
+Git bash is similar to linux terminal
+
+
+Commands:
+git --version (version chech)
+
+repo create in local:
+
+git init (Git is tracking in your folder)
+
+
+Clone the remote repo into the local
+
+repo create in server
+go to github website and click new repository and create repo
+
+git clone "https:link"
+
+
+
+1.Working Directory
+
+git status (show the changes file list in the command) Tracking the status
+
+2. Staging
+git status (look what files actually changed)
+
+git add ("--all" or "-A" is select all files)
+
+git add . (is working in the current directory)
+
+if remove everything in staging area: git reset (unstaging)
+
+git add * (Only changes new or modified files not deleted files)
+
+git add (file with format means individual files)
+
+git add *.format (file will add stage for with the current format files)
+
+
+3. Local repository (commit)
+
+git status (look for current stage)
+
+git commit -m "Message" 
+
+if need
+"""
+After commit show the config looks email and name
+
+git config --global user.email ""
+git config --global user.name ""
+
+"""
+
+git status
+
+if need:
+git reset HEAD~ (undo the last commit)
+
+
+file delete the local without delete button
+"""
+After commit you delete the file or folder in the local repo so we don't add and commit again the git use this command
+
+git rm ("what folder or file you want delete mentioned that file and format or folder name")
+
+"""
+
+
+after back the file and edit again and remove from the local and how to commit files remove that particular folder
+
+git rm "file.format" showing error so use force
+
+git rm -f "file.format" this will remove from the commit files and go to deletion segment
+
+
+AFter commit so that will unstage
+git rm --cached "file.format" this is remove in staging area
+
+
+Folder delete the local without delete button
+git rm -r <folder> if the folder contains sub folder so remove one by one
+
+git rm <folder> if the particular folder only delete
+
+How to view the commit:
+git log (instantly see the full commit history)
+
+git log --oneline (full commit history comes one line)
+
+Branching:
+
+What is branching?..
+
+Map to branch to merge in main to sub branch
+
+what is Merged?..
+
+git branch (list of branches)
+
+git branch <branch name> (create a new branch)
+
+git checkout <branch name> (switch to created branch)
+
+
+
+git merge main -m "comments" ( this will merge the main branch into to the command write feature branch)
+
+How Branching works?
+
+Carefull check to version change
+git log --oneline (check the commits)
+git checkout <commit id> (switch to previous verison instead off remove the all changes in the after that commitment files)
+
+
+Compare commits
+git log --oneline
+
+git diff <commit id 1> <commit id 2> (difference two commit ids)
+
+
+Push - sending local changes to the remote
+Fetch - Bringing remote changes into your local repository, but not merging them yet
+Pull - Fetching plus merging-so your working directory immediately reflects the remote changes
+
+Pull = Fetch + Merge
+
+git pull 
+
+git push origin <branch name> - (origin is the remote repository, remote branch data transfer to main branch)
+
+git fetch
+
+
+git restore <file or folder or .> (help to revert the state of the last commit)
+
+
+git restore --staged <file or .> (It's mainly used to undo local uncommited changes before they're ever commited)
+
+Stash
+what is stash?
+
+git stash (Temporaly store the file in local not commit)
+git stash pop (To retain the store file in the stash method without commit)
+
+git stash apply (restore the changes without commit and also safely save the stash)
+
+
+Difference between stash pop and apply
+
+git stash list (to show the list of stash)
+
+git stash drop (drop the after stash list and empty the stashs)
+
+git stash pop stash@{itemno}
+git stash apply stash@{itemno}
+
+
+Revert
+what is revert?
+
+git revert <commit id> (to revert the particular commit state)
+and "wq" keyword press to write and quit the method
+
+Resert
+
+What is reset?
+
+Difference between reset and revert
+
+git reset (so the after commit all data errased)
+
+Carefully use
+Rebase
+
+Pull request
+What is pull request?
+
+
