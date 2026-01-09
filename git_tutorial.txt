@@ -1,0 +1,304 @@
+Copy the markdown below and paste it into Word (it will preserve formatting):
+
+markdown
+# Git & GitHub Complete Tutorial
+
+## 1. Introduction to Git and GitHub
+
+### What is Git?
+Git is a **distributed version control system** that helps developers track changes in their code, collaborate with others, and manage different versions of a project. It allows multiple people to work on the same project without overwriting each other's work.
+
+**Example:**
+If you are writing a book and want to save each chapter separately, Git helps you save each version, revert to previous versions, and merge changes from different contributors.
+
+---
+
+### What is GitHub?
+GitHub is a **cloud-based hosting service** for Git repositories. It provides a web-based interface, collaboration tools, and features like pull requests, issue tracking, and project management.
+
+**Example:**
+GitHub is like Google Drive for code—you can store your Git projects online, share them with others, and collaborate remotely.
+
+---
+
+### Difference Between Git and GitHub
+| Git | GitHub |
+|------|---------|
+| Version control tool | Hosting service for Git repositories |
+| Installed locally | Cloud-based platform |
+| Manages version history | Adds collaboration features (PRs, issues, CI/CD) |
+| Command-line interface | Web-based GUI + CLI support |
+| Free and open-source | Free for public repos, paid for private |
+
+---
+
+## 2. Key Concepts
+
+### Repository
+A repository (or repo) is a **storage location** where your project files and their version history are stored. It can be local (on your computer) or remote (on a server like GitHub).
+
+**Example:**
+A repo is like a project folder that Git tracks—every change you make is recorded.
+
+---
+
+### Working Directory, Staging Area, Local Repository, and Commit
+1. **Working Directory** – Where you make changes to files.
+2. **Staging Area** – Where you prepare changes before committing.
+3. **Local Repository** – Where committed changes are stored permanently.
+4. **Commit** – A snapshot of changes saved to the repository with a message.
+
+**Analogy:**
+Think of it like packing for a trip:
+- Working Directory = Your room with clothes scattered.
+- Staging Area = Your suitcase where you choose what to pack.
+- Commit = Zipping the suitcase with a label ("Beach trip").
+- Local Repository = Your closet where the packed suitcase is stored.
+
+---
+
+## 3. Installation & Setup
+
+### Install Git
+Download Git from the official website:
+https://git-scm.com/
+
+After installation, verify:
+```bash
+git --version
+Git Bash
+Git Bash is a terminal emulator for Windows that provides a Linux-like command-line interface for using Git.
+
+4. Basic Commands & Workflow
+Initialize a Local Repository
+bash
+git init
+This turns your current folder into a Git-tracked repository.
+
+Clone a Remote Repository
+bash
+git clone https://github.com/username/repo.git
+This downloads a remote repository to your local machine.
+
+Check Status
+bash
+git status
+Shows which files are modified, staged, or untracked.
+
+Staging Changes
+bash
+git add file.txt          # Stage a specific file
+git add .                 # Stage all changes in current directory
+git add --all             # Stage all changes (including deletions)
+git add *.js              # Stage all JavaScript files
+To unstage:
+
+bash
+git reset file.txt
+Committing Changes
+bash
+git commit -m "Added login feature"
+If you see an error about user identity, set your global config:
+
+bash
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+To undo the last commit:
+
+bash
+git reset HEAD~
+5. File & Folder Management
+Remove Files from Git (Without Deleting Locally)
+bash
+git rm --cached file.txt
+Remove Files from Git and Locally
+bash
+git rm file.txt
+Force Remove
+bash
+git rm -f file.txt
+Remove Folder
+bash
+git rm -r folder_name
+6. Viewing History
+View Commit Log
+bash
+git log
+git log --oneline
+Compare Commits
+bash
+git diff commit_id_1 commit_id_2
+Switch to a Previous Commit
+bash
+git checkout commit_id
+7. Branching & Merging
+What is Branching?
+Branching allows you to create a separate line of development. Useful for features, experiments, or bug fixes without affecting the main code.
+
+Create and Switch Branches
+bash
+git branch feature-login      # Create branch
+git checkout feature-login    # Switch to branch
+Merge Branches
+bash
+git checkout main
+git merge feature-login -m "Merge login feature"
+8. Remote Operations
+Push to Remote
+bash
+git push origin main
+Pull from Remote
+bash
+git pull origin main
+(Pull = Fetch + Merge)
+
+Fetch from Remote
+bash
+git fetch
+(Fetches changes but does not merge)
+
+9. Stash
+What is Stash?
+Stash temporarily saves uncommitted changes so you can switch branches without committing.
+
+bash
+git stash                    # Save changes
+git stash pop               # Apply and remove stash
+git stash apply             # Apply but keep in stash list
+git stash list              # View stashes
+git stash drop              # Delete stash
+10. Revert vs Reset
+Revert
+Creates a new commit that undoes a previous commit.
+
+bash
+git revert commit_id
+Reset
+Moves the branch pointer backward, erasing commits (use with caution).
+
+bash
+git reset --hard commit_id
+Difference:
+
+Revert is safe for shared repos—it keeps history intact.
+
+Reset rewrites history and is risky for shared branches.
+
+11. Rebase
+Rebase rewrites commit history by moving commits to a new base. Useful for clean linear history.
+
+bash
+git rebase main
+Use carefully—it rewrites commit IDs.
+
+12. Pull Request
+A Pull Request (PR) is a GitHub feature that lets you propose changes and request a review before merging into the main branch. It's not a Git command but a collaboration workflow.
+
+Example:
+You create a feature branch → push to GitHub → open a PR → team reviews → merge to main.
+
+13. Restore Changes
+Restore Files to Last Commit
+bash
+git restore file.txt
+Unstage Files
+bash
+git restore --staged file.txt
+14. Summary of Common Workflow
+git init or git clone
+
+Make changes in working directory
+
+git add .
+
+git commit -m "message"
+
+git push origin main
+
+For collaboration: git pull, branch, merge, or rebase
+
+15. Practical Examples
+Example 1: Starting a New Project
+bash
+mkdir my-project
+cd my-project
+git init
+echo "# My Project" > README.md
+git add README.md
+git commit -m "Initial commit"
+Example 2: Working with Branches
+bash
+# Create and work on a feature
+git checkout -b new-feature
+# Make changes...
+git add .
+git commit -m "Add new feature"
+# Merge back to main
+git checkout main
+git merge new-feature
+Example 3: Fixing Mistakes
+bash
+# Accidentally committed wrong file
+git reset HEAD~1
+# Made changes to wrong file
+git restore file.txt
+# Need to switch branches but not ready to commit
+git stash
+git checkout other-branch
+git stash pop
+16. Best Practices
+Commit Often: Small, frequent commits are easier to manage
+
+Write Clear Messages: Use present tense ("Add feature" not "Added feature")
+
+Use Branches: Keep main branch stable
+
+Pull Before Push: Avoid merge conflicts
+
+Review Before Merging: Use pull requests for team projects
+
+17. Troubleshooting Common Issues
+Issue: "Please tell me who you are"
+Solution:
+
+bash
+git config --global user.email "your@email.com"
+git config --global user.name "Your Name"
+Issue: Merge conflicts
+Solution:
+
+Open conflicting files
+
+Resolve conflicts (look for <<<<<<<, =======, >>>>>>>)
+
+Stage resolved files: git add .
+
+Commit: git commit -m "Resolve merge conflicts"
+
+Issue: Accidentally committed to wrong branch
+Solution:
+
+bash
+git reset HEAD~1
+git stash
+git checkout correct-branch
+git stash pop
+Document Version: 2.0 | Last Updated: [Current Date]
+
+text
+
+## **Option 3: Use a Markdown to Word Converter**
+1. Save the above markdown as `git-tutorial.md`
+2. Use one of these tools to convert to Word:
+   - Pandoc (command line): `pandoc git-tutorial.md -o git-tutorial.docx`
+   - Online converters like CloudConvert, MarkdowntoWord, etc.
+   - VS Code with "Paste as Markdown" extension
+
+## **The document includes:**
+- ✅ All original content from your file
+- ✅ Enhanced explanations with examples
+- ✅ Answered questions (Git vs GitHub, branching, stash, revert vs reset, etc.)
+- ✅ Formatted for readability
+- ✅ Practical examples section
+- ✅ Best practices and troubleshooting
+- ✅ Professional Word document structure
